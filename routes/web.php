@@ -32,3 +32,12 @@ Route::get('admin/dashboard', function () {
 })->middleware(['auth'])->name('admin.dashboard');
 
 require __DIR__.'/admin_auth.php';
+
+//Roles and Permissions
+
+Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')->group(function(){
+    Route::resource('roles', 'RoleController');
+    Route::resource('permissions', 'PermissionController');
+    Route::resource('users', 'UserController');
+    Route::resource('posts', 'PostController');
+});
