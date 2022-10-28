@@ -18,16 +18,17 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
+
         $admin = User::create([
-            'name'=> 'adminjahid',
-            'email'=> 'adminjahid@gmail.com',
-            'password'=>'$2y$10$Q0Ar5Ap.3JtsegrGWXN0cOAY0qUAPj9qDkLJWeNH9Uht.vwtIsuD.'
+            'name'=> 'administrator',
+            'email'=> 'administrator@gmail.com',
+            'password'=> (1111),
         ]);
         
         $writer = User::create([
-            'name'=> 'writerjahid',
-            'email'=> 'writerjahid@gmail.com',
-            'password'=>'$2y$10$Q0Ar5Ap.3JtsegrGWXN0cOAY0qUAPj9qDkLJWeNH9Uht.vwtIsuD.'
+            'name'=> 'writer',
+            'email'=> 'writer@gmail.com',
+            'password'=> bcrypt(1111),
         ]);
 
 

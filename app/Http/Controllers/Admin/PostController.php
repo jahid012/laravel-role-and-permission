@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\PostCreated;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -52,9 +53,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data= $request->all();
-        $data['user_id'] = Auth::user()->id;
-        $Post = Post::create($data);
+        $post_data= $request->all();
+        $post_data['user_id'] = Auth::user()->id;
+        Post::create($post_data);
+
+        $data = ['title' => $post_data['title'], 'author' => auth()->user()->name];
+
+        event( new PostCreated($data));
         return redirect()->back()->withSuccess('Post created !!!');
     }
 
